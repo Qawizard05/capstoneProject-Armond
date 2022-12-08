@@ -1,9 +1,9 @@
 // Imported from class notes / qaHomeworkWiki / 2.8
 // See Mars's example from 11/23 class: https://github.com/MarohnHoward/group-number-projectpt9/blob/main/basePage.ts
 
-// This page is going to be shared among the groupg
 
-import {Builder, By, Capabilities, until, WebDriver, WebElement} from "selenium-webdriver";
+
+import {Builder, By, Capabilities, until, WebDriver, WebElement,Origin,Button} from "selenium-webdriver";
 const chromedriver = require("chromedriver")
 
 interface Options {
@@ -49,5 +49,26 @@ export class BasePage {
     }
     async getAttribute(elementBy: By, attribute: string): Promise<string> {
         return (await this.getElement(elementBy)).getAttribute(attribute)
+    }
+    async doDragAndDrop(fromElement: WebElement, toElement: WebElement): Promise<void> {
+        //required importing "Actions"
+        // return this.driver.actions().dragAndDrop(fromElement, toElement).perform()
+        console.log(`doDragAndDrop: starting`)
+        const actionPause = 500
+        const actionPromise = this.driver
+                .actions()
+                .move({origin: fromElement, duration: 500}) //x:20, y:20,
+                .pause(actionPause)
+                .press(Button.LEFT)
+                .move({origin: Origin.POINTER, x:5, y:5}) // test
+                .pause(actionPause)
+                .move({origin: toElement, duration: 2000})
+                .pause(actionPause)
+                .move({origin: Origin.POINTER, x:5, y:5}) // test
+                .release(Button.LEFT)
+                .pause(actionPause)
+                .perform();
+        console.log(`doDragAndDrop: Action promise constructed`)
+        return actionPromise
     }
 }
