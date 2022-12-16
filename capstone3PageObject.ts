@@ -1,9 +1,9 @@
 import { Actions,Builder,By,Capabilities, WebDriver, until, WebElement,Origin, Button} from "selenium-webdriver";
 import {BasePage} from './capstoneBasePage'
 
-export class armondQA extends BasePage {
+export class armondQA3 extends BasePage {
 
-    url: string = "https://demoqa.com/text-box";
+    url: string = "https://demoqa.com/radio-button";
 
     elementsPanel: By = By.xpath ('//h5[text() = "Elements"]')
     textBox: By = By.id("item-0")
@@ -36,8 +36,8 @@ export class armondQA extends BasePage {
     elementsTab: By = By.xpath('//span[text() = "Elements"]')
     widgetsTab: By = By.xpath('//span[text() = "Widgets"]')
     autoComplete: By = By.xpath('//span[text() ="Auto Complete"]')
-    multiColor: By = By.xpath('//*[@id="autoCompleteMultipleContainer"]/div/div[1]')
-    oneColor: By = By.xpath('//*[@id="autoCompleteSingleContainer"]/div/div[1]')
+    multiColor: By = By.id('autoCompleteMultipleInput')
+    oneColor: By = By.id('autoCompleteSingleInput')
     accordion: By = By.xpath('//span[text() ="Accordian"]')
     sect1: By = By.id("section1Heading")
     sect2: By = By.id("section2Heading")
@@ -57,22 +57,3 @@ export class armondQA extends BasePage {
   }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
- //   Constructor() {
-  // ({url: "https://demoqa.com"})
-
-
-
-
-//}

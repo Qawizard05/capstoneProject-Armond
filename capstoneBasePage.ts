@@ -3,7 +3,7 @@
 
 
 
-import {Builder, By, Capabilities, until, WebDriver, WebElement,Origin,Button} from "selenium-webdriver";
+import {Actions,Builder, By, Capabilities, until, WebDriver, WebElement,Origin,Button} from "selenium-webdriver";
 const chromedriver = require("chromedriver")
 
 interface Options {
@@ -71,4 +71,33 @@ export class BasePage {
         console.log(`doDragAndDrop: Action promise constructed`)
         return actionPromise
     }
+
+   //methods - repeatable functionality
+
+   async repeatClick(clickNum, elementClick) {
+    for (let i = 0; i < clickNum; i++) {
+        await this.click(elementClick)
+    }
+}
+
+async tabs() {
+    let myTabs = await this.driver.getAllWindowHandles()
+    /* random expect example sorry
+    let results = await this.getText(this.legacyBtn)
+    expect(results).toContain("Legacy")
+    */
+    await this.driver.switchTo().window(myTabs[1]);
+    await this.driver.sleep(1000);
+    await this.driver.close()
+    await this.driver.switchTo().window(myTabs[0])
+}
+
+async sendKeys(elementBy: By, keys) {
+    await this.driver.wait(until.elementLocated(elementBy))
+    return this.driver.findElement(elementBy).sendKeys(keys)
+}
+
+//async contextClick(elementBy: By): Promise<void> {
+  //  return(await this.getElement(elementBy))
+//}
 }
