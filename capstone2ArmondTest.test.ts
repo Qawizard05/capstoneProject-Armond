@@ -12,21 +12,18 @@ const page = new armondQA2()
 test('Auto Complete Widget', async () => {
     await page.navigate();
     await driver.sleep(2000);
-   // await page.getElement(page.widgetsTab);
-    //await driver.sleep(2000);
-    //await page.click(page.widgetsTab);
-   // await driver.sleep(2000);
-  //  await page.getElement(page.autoComplete);
- //   await driver.sleep(2000);
-  //  await page.click(page.autoComplete);
     await page.getElement(page.multiColor);
     await page.sendKeys(page.multiColor,"re\n" );
+    await driver.sleep(1000);
     await page.getElement(page.multiColor);
     await page.sendKeys(page.multiColor,"bl\n" );
+    await driver.sleep(1000);
     await page.getElement(page.multiColor);
+    await driver.sleep(1000)
     await page.sendKeys(page.multiColor, "gr\n");
     await page.getElement(page.oneColor);
     await page.sendKeys(page.oneColor, "re\n");
+    await driver.sleep(2000)
 
     }
     )
@@ -40,9 +37,12 @@ test('Auto Complete Widget', async () => {
          await page.click(page.accordion);
          await page.getElement(page.sect1);
          await page.click(page.sect1 );
+         await driver.sleep(1000)
          await page.getElement(page.sect2);
          await page.click(page.sect2);
+         await driver.sleep(1000)
          await page.getElement(page.sect3);
+         await driver.sleep(1000)
          await page.click(page.sect3);
     }
     )

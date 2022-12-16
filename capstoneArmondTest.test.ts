@@ -13,23 +13,24 @@ const driver: WebDriver = new Builder()
 
   test('Textbox Functionality', async () => {
     await page.navigate();
-   // await page.getElement(page.elementsPanel);
-    //await page.click(page.elementsPanel);
-  //  await page.getElement(page.elementsTab);
-   // await page.click(page.elementsTab);
-  //  await page.getElement(page.textBox);
-   // await page.click(page.textBox, );
+
    await page.driver.sleep(2000)
     await page.getElement(page.fullName);
     await page.setInput(page.fullName, "John Smith");
+    await driver.sleep(1000)
     await page.getElement(page.email);
     await page.setInput(page.email, "John@fakeemail.com");
+    await driver.sleep(1000)
     await page.getElement(page.address)
     await page.setInput(page.address, " 123 Blue St AnyTown, USA")
+    await driver.sleep(1000)
     await page.getElement(page.permAddress);
     await page.setInput(page.permAddress,"512 Green Rd. Townsville, CA");
+    await driver.sleep(1000)
     await page.getElement(page.submitBtn);
+    await driver.sleep(1000)
     await page.click(page.submitBtn)
+    await driver.sleep(2000)
 
   })
 
@@ -42,6 +43,7 @@ const driver: WebDriver = new Builder()
     await page.click(page.webTable);
     await page.getElement(page.addBtn);
     await page.click(page.addBtn);
+    await driver.sleep(1000)
     await page.getElement(page.firstName);
     await page.setInput(page.firstName,"John" );
     await page.getElement(page.lastName);
@@ -54,6 +56,7 @@ const driver: WebDriver = new Builder()
     await page.setInput(page.department, "QA");
     await page.getElement(page.submitBtn);
     await page.click(page.submitBtn);
+    await driver.sleep(1000)
 
 
 
